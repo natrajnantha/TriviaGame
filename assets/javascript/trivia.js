@@ -140,13 +140,13 @@ function processAnswer(t) {
             $("#resultTxt").html("Excellent !!!");
             correctResponse++;
         } else {
-            $("#resultTxt").html("Correct answer is : " + quizDBobj[currentQuestion].choices[quizDBobj[currentQuestion].correctAnswer]);
+            $("#resultTxt").html("Nope, answer is : " + quizDBobj[currentQuestion].choices[quizDBobj[currentQuestion].correctAnswer]);
             incorrectResponse++;
         }
         dispStats();
         wait(5000);
     } else {
-        $("#resultTxt").html("Correct answer is : " + quizDBobj[currentQuestion].choices[quizDBobj[currentQuestion].correctAnswer]);
+        $("#resultTxt").html("Answer is : " + quizDBobj[currentQuestion].choices[quizDBobj[currentQuestion].correctAnswer]);
         unansweredResponse++;
         dispStats();
         wait(5000);
