@@ -1,0 +1,94 @@
+/* Students: Our work lies in the js file. */
+
+body { 
+    background-image: url("../images/bck.jpg");
+}
+
+#displayhead {
+    font-family: monospace;
+    font-size: 50px;
+    color: green;
+    text-align: center;
+    background: #043364;
+    padding: 4px 0px 0px 0;
+    margin: -8px;
+}
+
+
+#display {
+  font-family: monospace;
+  font-size: 50px;
+  color: green;
+  text-align: center;
+  background: lightblue;
+}
+
+#wrapper {
+    width: 800px;
+    height: 600px;
+    margin: 100px auto 0;
+    background: rgb(221, 221, 109);
+    border: 50px solid #043364;
+}
+
+#buttons { /* Typography */
+  text-align: center;
+}
+
+button {
+    width: 175px;
+    height: 47px;
+    font-size: 30px;
+    color: brown;
+    background: black;
+    position: relative;
+    margin-top: 2px;
+}
+
+#quizWrapper {
+    width: 100%;
+    height: 542px;
+    background: seagreen;
+    margin: -3px 0px 0 0;
+    text-align: center;
+    border-top: 2px solid yellow;
+}
+
+#resultTxt {
+  color: brown;
+  width: 100%;
+  position: relative;
+} 
+
+#gipgif {
+    float: right;
+    width: 200px;
+    height: 200px;
+    margin: 30px 60px 0px 0px;
+    position: relative;
+    /* border: 5px solid beige; */
+}
+
+#gameStats {
+    float: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow;
+    text-align: right;
+    margin: 0px 0px 0px 140px;
+    font-size: 26px;
+    position: relative;
+}
+
+
+#optionsWrapper {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    color: yellowgreen;
+    text-align: center;
+    font-weight: 800;
+}
+
+#question {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: beige;
+}

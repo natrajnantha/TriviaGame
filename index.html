@@ -1,0 +1,59 @@
+<!-- Students: Our work lies in the js file. -->
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Trivia</title>
+
+    <!-- Our CSS style sheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div id="displayhead">RANDOM TRIVIA</div>
+    <div id="wrapper">
+        <div id="display">00:00</div>
+
+        <div id="quizWrapper">
+            <h2 id="question"></h2>
+
+          <div id="optionsWrapper">
+          </div>
+          <br>
+          <br>
+          <hr>
+            <div id="resultWrapper">
+
+                <div id="gameStats">
+                    <p id="progress"></p>
+                    <p id="correct"></p>
+                    <p id="incorrect"></p>
+                    <p id="unanswered"></p>
+                </div>
+                <img id="gipgif" src="" alt="">
+                <h1 id="resultTxt"></h1>
+
+            </div>
+
+        </div>
+        <div id="buttons">
+                <button id="start">Start</button>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script type="text/javascript" src="assets/javascript/questions.js"></script>
+    <script type="text/javascript" src="assets/javascript/trivia.js"></script>
+
+</body>
+
+</html>
