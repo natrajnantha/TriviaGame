@@ -1,5 +1,3 @@
-/* Students: Our work lies in the js file. */
-
 body { 
     background-image: url("../images/bck.jpg");
 }
@@ -31,7 +29,7 @@ body {
     border: 50px solid #043364;
 }
 
-#buttons { /* Typography */
+#buttons { 
   text-align: center;
 }
 
@@ -66,7 +64,6 @@ button {
     height: 200px;
     margin: 30px 60px 0px 0px;
     position: relative;
-    /* border: 5px solid beige; */
 }
 
 #gameStats {

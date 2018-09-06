@@ -14,12 +14,12 @@ window.onload = function () {
     $("#start").on("click", start);
 };
 
+// This function resets the screen contents and variables for the next question 
 function reset() {
 
     time = 0;
     lap = 1;
     answerClicked = false;
-    console.log("Resetting the next question");
 
     $("#display").text("00:00");
     $("#laps").text("");
@@ -30,7 +30,6 @@ function reset() {
     if (currentQuestion > quizDBobj.length - 1) {
         console.log("Game over");
         stop();
-        // dispImage();
         $("#gipgif").empty();
         $("#resultTxt").empty();
         $("#start").show();
@@ -40,14 +39,13 @@ function reset() {
         console.log("Incorrect Answers : " + incorrectResponse);
         console.log("Unanswered : " + unansweredResponse);
     } else {
-        console.log("Current question : " + currentQuestion);
         displayQuestion();
         intervalId = setInterval(count, 1000);
     }
 }
 
+// This function is executed when the start button is clicked. All the global variables will be initialized for the next game start
 function start() {
-    console.log("Total questions : " + quizDBobj.length);
     currentQuestion = 0;
     correctResponse = 0;
     incorrectResponse = 0;
@@ -67,15 +65,15 @@ function start() {
     intervalId = setInterval(count, 1000);
 }
 
+// This clears the main interval. Called when the user has choosen an answer or when the question times out
 function stop() {
-
-    console.log("stopping");
     clearInterval(intervalId);
-
 }
 
-function count() {
 
+// On Every interval this function is called to keep the clock ticking. Each question has 10 seconds. If the 10 seconds elapse, then the processAnswer routine is called to 
+// evaluate result
+function count() {
     time++;
     var converted = timeConverter(time);
     $("#display").text(converted);
@@ -86,6 +84,7 @@ function count() {
 
 }
 
+// Converts the time to display format
 function timeConverter(t) {
 
     var minutes = Math.floor(t / 60);
@@ -105,6 +104,7 @@ function timeConverter(t) {
     return minutes + ":" + seconds;
 }
 
+// This routine displays the current question and options based on the quizDBob array object. The maximum options is limited to 4 in this game
 function displayQuestion() {
     $("#question").html(quizDBobj[currentQuestion].question);
     for (let i = 0; i < 4; i++) {
@@ -112,10 +112,10 @@ function displayQuestion() {
         $("#option" + i).after("<label for='option" + i + "'></label>");
         $("#option" + i).prop("checked", false);
         $("label[for='option" + i + "']").html(quizDBobj[currentQuestion].choices[i]);
-        console.log("Options " + quizDBobj[currentQuestion].choices[i]);
     }
 }
 
+// This routine is called to process the result. This is called if the user has clicked on a response or when the question times out with no user response, The result is evaluated accordingly.
 function processAnswer(t) {
     stop();
     if (answerClicked) {
@@ -136,8 +136,6 @@ function processAnswer(t) {
                 break;
         }
 
-        console.log("User Answer : " + quizDBobj[currentQuestion].userAnswer);
-        console.log("Correct Answer : " + quizDBobj[currentQuestion].correctAnswer);
         if (quizDBobj[currentQuestion].userAnswer === quizDBobj[currentQuestion].correctAnswer) {
             $("#resultTxt").html("Excellent !!!");
             correctResponse++;
@@ -147,25 +145,22 @@ function processAnswer(t) {
         }
         dispStats();
         wait(5000);
-        // reset();
     } else {
-        console.log("Correct answer is : " + quizDBobj[currentQuestion].choices[quizDBobj[currentQuestion].correctAnswer]);
         $("#resultTxt").html("Correct answer is : " + quizDBobj[currentQuestion].choices[quizDBobj[currentQuestion].correctAnswer]);
         unansweredResponse++;
         dispStats();
         wait(5000);
-        // reset();
     }
 }
 
+// This routine is called to animate the user result and to pause for 5 seconds before moving on to the next question
 function wait(timeParm) {
     $("input[type=radio]").attr('disabled', true);
-
     dispImage();
-
     setTimeout(function(){reset();},timeParm);
 }
 
+// The below routine is called to animate the question result. Ajax call is made to giphy API to get list of images and a random image is choosen from the list to display
 function dispImage() {
     var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
     var gifImg;
@@ -175,17 +170,15 @@ function dispImage() {
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
       randomindex = Math.floor(Math.random()*(response.data.length-1+1)+1);
 
-      console.log("Length : " + response.data.length + " Random : " + randomindex);
 
       gifImg = response.data[randomindex].images.downsized.url;
-      console.log("ImgURL1 : " + gifImg);
       $("#gipgif").attr("src",gifImg);
     });
 }
 
+// This routine displays the ongoing game statistics and final
 function dispStats() {
     var currentQuestionDisp = currentQuestion + 1;
     $('#progress').text("Question " + currentQuestionDisp + " of " + quizDBobj.length);
